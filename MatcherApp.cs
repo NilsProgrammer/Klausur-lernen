@@ -24,12 +24,7 @@
             {
                 foreach(IFruit fruit in Fruits)
                 {
-                    bool matched = Matcher.Match(person, fruit);
-                    if (matched) candidates.Add(person);
-                    if (matched)
-                    {
-                        Console.WriteLine("Matched " + person.Name + ": " + fruit.Name);
-                    }
+                    if (Matcher.Match(person, fruit)) candidates.Add(person);
                 }
             }
 
