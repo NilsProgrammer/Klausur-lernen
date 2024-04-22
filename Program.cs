@@ -14,8 +14,6 @@
                 matcherApp.AddFruit(fruit);
             }
 
-            matcherApp.Match();
-
             Console.ReadLine();
         }
     }
