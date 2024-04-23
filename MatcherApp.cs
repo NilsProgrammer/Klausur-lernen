@@ -4,29 +4,31 @@
     {
         public List<IPerson> People { get; } = new List<IPerson>();
         public List<IFruit> Fruits { get; } = new List<IFruit>();
-        public List<IPerson> Candidates { get; } = new List<IPerson>();
+        public List<ICandidate> Candidates { get; } = new List<ICandidate>();
         public Matcher Matcher { get; } = new Matcher();
 
         public void AddPerson(IPerson person)
         {
             People.Add(person);
-            Match();
+            Match(person);
         }
 
         public void AddFruit(IFruit fruit)
         {
             Fruits.Add(fruit);
-            Match();
+            foreach (IPerson person in People) {
+                Match(person);
+            }
         }
 
-        public void Match()
+        public void Match(IPerson person)
         {
-            foreach (IPerson person in People)
+            foreach (ICandidate candidate in Candidates)
             {
-                if (Candidates.Contains(person)) { continue; }
+                ICandidate candidate = Candidates[i];
+                if (candidate.Person == person) {continue;}
 
-                foreach(IFruit fruit in Fruits)
-                {
+                foreach (IFruit fruit in Fruits) {
                     if (Matcher.Match(person, fruit)) {
                         Candidates.Add(person);
                     }
